@@ -1,3 +1,6 @@
+# 功能
+    使用whisper生成英文视频的字幕
+
 # 环境安装过程
     pip install --upgrade pip
     pip install -U openai-whisper

@@ -43,7 +43,7 @@
     ```
 
 # 生成中文字幕
-1. 单个视频文件生成字幕
+    1. 单个视频文件生成字幕
     python generate_chs_subtitles.py "1.mp4" --model medium
-2. 文件夹下所有视频文件生成字幕
+    2. 文件夹下所有视频文件生成字幕
     python batch_generate_chs_subtitles.py "E:\jigsaw_lesson" --model medium

@@ -11,6 +11,9 @@
     # 安装字幕文件生成库
     pip install srt
 
+    # fast-whisper 需要cuda 12.1 以上
+    # 换个翻译模型
+    pip install transformers ctransformers sentencepiece
 
 # 问题记录
 1. 下载whisper失败
@@ -50,3 +53,5 @@
     python generate_chs_subtitles.py "1.mp4" --model medium
     2. 文件夹下所有视频文件生成字幕
     python batch_generate_chs_subtitles.py "E:\jigsaw_lesson" --model medium
+    3. 使用fast-whisper生成字幕
+    python batch_generate_chs_subtitles_fast_whisper.py "E:\jigsaw_lesson2" --model large-v3 -c 180

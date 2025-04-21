@@ -93,7 +93,8 @@ def main():
     extract_audio(video_path, audio_path)
 
     print("2. 英文转写 …")
-    segments = transcribe(audio_path, model_size=args.model)
+    model = whisper.load_model(args.model)
+    segments = transcribe(audio_path, model=model)
 
     print("3. 翻译成中文 …")
     translations = translate_segments(segments)
@@ -101,40 +102,10 @@ def main():
     print("4. 生成 SRT 字幕 …")
     segments_to_srt(translations, srt_path)
 
-    print("5. 合成带字幕视频 …")
-    mux_subtitle(video_path, srt_path, output_mp4)
+    # print("5. 合成带字幕视频 …")
+    # mux_subtitle(video_path, srt_path, output_mp4)
 
     print(f"完成！输出文件：{output_mp4}")
-
-    # parser = argparse.ArgumentParser(
-    #     description="批量为目录下所有 MP4 视频生成中文字幕（.srt）"
-    # )
-    # parser.add_argument(
-    #     "input_dir",
-    #     help="要处理的根目录（会递归查找 .mp4/.MP4 文件）"
-    # )
-    # parser.add_argument(
-    #     "--model", "-m",
-    #     default="small.en",
-    #     help="Whisper 模型名称（如 tiny, base, small, small.en, medium）"
-    # )
-    # args = parser.parse_args()
-
-    # # 切换到脚本所在目录，确保相对路径一致
-    # os.chdir(os.path.dirname(os.path.abspath(sys.argv[0])))
-
-    # # 加载 Whisper 模型（只加载一次）
-    # print(f"加载 Whisper 模型：{args.model} …")
-    # model = whisper.load_model(args.model)
-
-    # # 遍历目录
-    # for root, _, files in os.walk(args.input_dir):
-    #     for fn in files:
-    #         if fn.lower().endswith(".mp4"):
-    #             video_path = os.path.join(root, fn)
-    #             process_video(video_path, model)
-
-    # print("全部完成！")
 
 if __name__ == "__main__":
     main()

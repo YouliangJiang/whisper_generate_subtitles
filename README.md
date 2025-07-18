@@ -55,3 +55,7 @@
     python batch_generate_chs_subtitles.py "E:\jigsaw_lesson" --model medium
     3. 使用fast-whisper生成字幕
     python batch_generate_chs_subtitles_fast_whisper.py "E:\jigsaw_lesson2" --model large-v3 -c 180
+
+# 其他参数
+    1. 日文视频生成中文字幕
+    python generate_subtitles.py /path/to/your/videos --lang ja
